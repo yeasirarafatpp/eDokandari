@@ -20,6 +20,8 @@ const showProducts = (products) => {
       <h3>${product.title}</h3>
       <p>Category: ${product.category}</p>
       <h2>Price: $ ${product.price}</h2>
+      <p>Product Rating: ${product.rating.rate}</p>
+      <p>Total Rating: ${product.rating.count}</p>
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
       <button id="details-btn" class="btn btn-danger">Details</button></div>
       `;
@@ -38,14 +40,14 @@ const addToCart = (id, price) => {
 
 const getInputValue = (id) => {
   const element = document.getElementById(id).innerText;
-  const converted = parseFloat(element).toFixed(2);
+  const converted = parseFloat(element);
   return converted;
 };
 
 // main price update function
 const updatePrice = (id, value) => {
   const convertedOldPrice = getInputValue(id);
-  const convertPrice = parseFloat(value).toFixed(2);
+  const convertPrice = parseFloat(value);
   const total = convertedOldPrice + convertPrice;
   document.getElementById(id).innerText = total;
 };
